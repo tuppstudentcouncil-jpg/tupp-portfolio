@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* ชุดสี TUPP (ชมพู-น้ำเงิน) แบบ Google Sites */
-  --primary: #ec4899;       /* ชมพู TUPP */
+  --primary: #ec4899;
   --primary-dark: #be185d;
-  --secondary: #1e3a8a;     /* น้ำเงินเข้ม */
+  --secondary: #1e3a8a;
   --text-main: #334155;
   --text-light: #64748b;
-  --bg-body: #ffffff;       /* พื้นหลังขาวสะอาด */
+  --bg-body: #ffffff;
   --bg-light: #f8fafc;
   --border: #e2e8f0;
-  --radius: 8px;            /* ความมนน้อยลง ให้ดูเป็นทางการ */
+  --radius: 8px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,7 +21,7 @@ body {
   line-height: 1.6;
 }
 
-/* ===== 1. NAVBAR (เมนูบาร์ด้านบน) ===== */
+/* ===== NAVBAR ===== */
 .navbar {
   background: white;
   border-bottom: 1px solid var(--border);
@@ -72,9 +71,8 @@ body {
 
 .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
 
-/* ===== 2. HERO HEADER (แบนเนอร์เต็มจอ) ===== */
+/* ===== HERO HEADER ===== */
 .hero {
-  /* ไล่สี Gradient ชมพู-น้ำเงิน สไตล์โรงเรียน */
   background: linear-gradient(135deg, #1e3a8a 0%, #ec4899 100%);
   height: 320px;
   display: flex;
@@ -84,10 +82,8 @@ body {
   color: white;
   position: relative;
   overflow: hidden;
-  /* ไม่มีการมนมุมด้านล่าง เพื่อให้เต็มจอ */
 }
 
-/* ลวดลายจางๆ ด้านหลัง */
 .hero::before {
   content: '';
   position: absolute;
@@ -113,7 +109,7 @@ body {
   font-weight: 300;
 }
 
-/* ===== 3. FILTERS BAR (แถบตัวกรองแบบทางการ) ===== */
+/* ===== FILTERS BAR ===== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -131,7 +127,7 @@ body {
   align-items: flex-end;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
   margin-bottom: 3rem;
-  margin-top: -4rem; /* ดึงขึ้นไปทับ Header นิดหน่อยให้ดูมีมิติ */
+  margin-top: -4rem;
   position: relative;
   z-index: 10;
 }
@@ -153,7 +149,7 @@ body {
   width: 100%;
   padding: 10px 15px;
   border: 1px solid var(--border);
-  border-radius: 4px; /* มุมเหลี่ยมขึ้นนิดนึง ให้ดูทางการ */
+  border-radius: 4px;
   font-family: 'Prompt', sans-serif;
   color: var(--text-main);
   background: #fff;
@@ -179,7 +175,7 @@ body {
   align-items: center;
   gap: 6px;
   transition: 0.2s;
-  height: 42px; /* ให้เท่ากับ Select */
+  height: 42px;
 }
 
 #resetFilter:hover {
@@ -188,7 +184,7 @@ body {
   border-color: #fca5a5;
 }
 
-/* ===== 4. CONTENT & GRID ===== */
+/* ===== CONTENT & GRID ===== */
 .section-header {
   margin-bottom: 2rem;
   position: relative;
@@ -221,7 +217,7 @@ body {
   gap: 2rem;
 }
 
-/* การ์ดแบบ Clean White Card */
+/* ===== CARD STYLES ===== */
 .card {
   background: white;
   border: 1px solid var(--border);
@@ -240,7 +236,7 @@ body {
 }
 
 .card-cover {
-  height: 320px; /* แนวตั้ง A4 */
+  height: 470px;
   width: 100%;
   background: #f1f5f9;
   overflow: hidden;
@@ -254,11 +250,47 @@ body {
 .cover-img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* โชว์ภาพเต็มใบ ไม่โดนตัด */
+  object-fit: contain;
   transition: 0.5s;
 }
 
-.card:hover .cover-img { transform: scale(1.05); }
+.card:hover .cover-img { 
+  transform: scale(1.05); 
+}
+
+/* 🔥 สำหรับ iframe preview */
+.pdf-preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none; /* ป้องกันการคลิกใน iframe */
+}
+
+.card:hover .pdf-preview-iframe {
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+
+/* 🔥 Placeholder สำหรับกรณีที่ไม่มีรูป */
+.placeholder-cover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  font-size: 3rem;
+  color: #94a3b8;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.placeholder-cover::after {
+  content: 'ไม่มีตัวอย่าง';
+  font-size: 0.9rem;
+  font-family: 'Prompt', sans-serif;
+  color: #64748b;
+}
 
 .card-body {
   padding: 1.25rem;
@@ -283,7 +315,7 @@ body {
 .university-tag {
   margin-top: auto;
   padding-top: 1rem;
-  color: var(--secondary); /* เปลี่ยนเป็นสีน้ำเงินให้ดูทางการ */
+  color: var(--secondary);
   font-weight: 600;
   font-size: 0.85rem;
   display: flex;
@@ -291,7 +323,7 @@ body {
   gap: 6px;
 }
 
-/* ===== 5. FOOTER & PAGINATION ===== */
+/* ===== FOOTER & PAGINATION ===== */
 .pagination-info {
   text-align: center;
   margin-top: 3rem;
@@ -300,7 +332,7 @@ body {
 }
 
 .site-footer {
-  background: #1e293b; /* สีเทาเข้มเกือบดำ */
+  background: #1e293b;
   color: #94a3b8;
   text-align: center;
   padding: 3rem 1rem;
@@ -308,11 +340,12 @@ body {
   font-size: 0.9rem;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: block; }
   .hero h1 { font-size: 2rem; }
   .filters-bar { margin-top: 0; padding: 1.25rem; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); }
+  .card-cover { height: 400px; }
 }
