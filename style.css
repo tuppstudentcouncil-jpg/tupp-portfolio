@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ชุดสี TUPP (ชมพู-น้ำเงิน) แบบ Google Sites */
+  --primary: #ec4899;       /* ชมพู TUPP */
+  --primary-dark: #be185d;
+  --secondary: #1e3a8a;     /* น้ำเงินเข้ม */
+  --text-main: #334155;
+  --text-light: #64748b;
+  --bg-body: #ffffff;       /* พื้นหลังขาวสะอาด */
+  --bg-light: #f8fafc;
+  --border: #e2e8f0;
+  --radius: 8px;            /* ความมนน้อยลง ให้ดูเป็นทางการ */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Prompt', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ===== 1. NAVBAR (เมนูบาร์ด้านบน) ===== */
+.navbar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--secondary);
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: 0.2s;
+  padding-bottom: 4px;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+/* ===== 2. HERO HEADER (แบนเนอร์เต็มจอ) ===== */
+.hero {
+  /* ไล่สี Gradient ชมพู-น้ำเงิน สไตล์โรงเรียน */
+  background: linear-gradient(135deg, #1e3a8a 0%, #ec4899 100%);
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  /* ไม่มีการมนมุมด้านล่าง เพื่อให้เต็มจอ */
+}
+
+/* ลวดลายจางๆ ด้านหลัง */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.hero-content {
+  z-index: 2;
+  padding: 0 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* ===== 3. FILTERS BAR (แถบตัวกรองแบบทางการ) ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.filters-bar {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-end;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  margin-bottom: 3rem;
+  margin-top: -4rem; /* ดึงขึ้นไปทับ Header นิดหน่อยให้ดูมีมิติ */
+  position: relative;
+  z-index: 10;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--border);
+  border-radius: 4px; /* มุมเหลี่ยมขึ้นนิดนึง ให้ดูทางการ */
+  font-family: 'Prompt', sans-serif;
+  color: var(--text-main);
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s;
+}
+
+.select-wrapper select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+#resetFilter {
+  padding: 10px 20px;
+  background: var(--bg-light);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.2s;
+  height: 42px; /* ให้เท่ากับ Select */
+}
+
+#resetFilter:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+/* ===== 4. CONTENT & GRID ===== */
+.section-header {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: inline-block;
+  background: white;
+  padding-right: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header .divider {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* การ์ดแบบ Clean White Card */
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  border-color: var(--primary);
+}
+
+.card-cover {
+  height: 320px; /* แนวตั้ง A4 */
+  width: 100%;
+  background: #f1f5f9;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* โชว์ภาพเต็มใบ ไม่โดนตัด */
+  transition: 0.5s;
+}
+
+.card:hover .cover-img { transform: scale(1.05); }
+
+.card-body {
+  padding: 1.25rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+.university-tag {
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--secondary); /* เปลี่ยนเป็นสีน้ำเงินให้ดูทางการ */
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== 5. FOOTER & PAGINATION ===== */
+.pagination-info {
+  text-align: center;
+  margin-top: 3rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  background: #1e293b; /* สีเทาเข้มเกือบดำ */
+  color: #94a3b8;
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .hero h1 { font-size: 2rem; }
+  .filters-bar { margin-top: 0; padding: 1.25rem; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); }
+}
